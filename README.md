@@ -6,9 +6,9 @@ A full-stack AI-powered interview preparation platform that enables users to pra
 
 ##  Live Demo
 
-> 🌐 Frontend: *(Add your deployed frontend URL here)*
+> 🌐 Frontend: https://ai-interview-app-frontend-kappa.vercel.app/
 
-> ⚡ Backend API: *(Add your backend URL here)*
+> ⚡ Backend API: https://ai-interview-app-eex4.onrender.com
 
 ---
 
