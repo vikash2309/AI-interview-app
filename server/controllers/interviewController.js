@@ -1,4 +1,4 @@
-import Interview from "../models/Interview.js";
+import Interview from "../models/interview.js";
 import {
   generateQuestions,
 }
