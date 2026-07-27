@@ -1,9 +1,12 @@
 import {
     FilesetResolver,
-    FaceDetector
+    FaceDetector,
+     FaceLandmarker
 } from "@mediapipe/tasks-vision";
 
 let faceDetector = null;
+let landmarker = null;
+
 
 /**
  * Initializes the MediaPipe Face Detector.
@@ -31,4 +34,28 @@ export const initializeFaceDetector = async () => {
     });
 
     return faceDetector;
+};
+export const initializeFaceLandmarker = async () => {
+
+    if (landmarker) return landmarker;
+
+    const vision = await FilesetResolver.forVisionTasks(
+        "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@latest/wasm"
+    );
+
+    landmarker = await FaceLandmarker.createFromOptions(
+        vision,
+        {
+            baseOptions: {
+                modelAssetPath:
+                    "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task"
+            },
+
+            runningMode: "VIDEO",
+
+            numFaces: 1
+        }
+    );
+
+    return landmarker;
 };

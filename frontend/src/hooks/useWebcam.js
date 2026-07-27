@@ -75,9 +75,19 @@ const useWebcam = () => {
         };
 
     }, [stream]);
+    const stopWebcam = () => {
+    if (!videoRef.current?.srcObject) return;
+
+    const stream = videoRef.current.srcObject;
+
+    stream.getTracks().forEach(track => track.stop());
+
+    videoRef.current.srcObject = null;
+};
 
     return {
         videoRef,
+        stopWebcam,
         loading,
         error
     };
