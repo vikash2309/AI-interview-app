@@ -34,7 +34,12 @@ function InterviewRoom() {
   const navigate = useNavigate();
 
   const { getToken } = useAuth();
-  const { videoRef, loading: webcamLoading, error: webcamError, stopWebcam, } = useWebcam();
+  const {
+    videoRef,
+    loading: webcamLoading,
+    error: webcamError,
+    stopWebcam,
+  } = useWebcam();
 
   const {
     faceDetected,
@@ -42,7 +47,8 @@ function InterviewRoom() {
     headDirection,
     distanceStatus,
     facePosition,
-     stopFaceDetection,
+    stopFaceDetection,
+    getInterviewAnalytics,
   } = useFaceDetection(videoRef);
 
   const [interview, setInterview] = useState(null);
@@ -152,13 +158,14 @@ function InterviewRoom() {
       stopListening();
 
       stopSpeaking();
+      const cameraAnalytics = getInterviewAnalytics();
       stopFaceDetection();
       stopWebcam();
       const token = await getToken();
 
       const updatedAnswers = saveCurrentAnswer();
       await saveAnswers(interview._id, updatedAnswers, token);
-      await finishInterview(interview._id, token);
+      await finishInterview(interview._id,cameraAnalytics, token);
       await evaluateInterview(interview._id, token);
 
       navigate(`/evaluation/${interview._id}`, {

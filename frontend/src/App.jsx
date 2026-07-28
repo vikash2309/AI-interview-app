@@ -11,7 +11,7 @@ import InterviewDetails from "./pages/InterviewDetails";
 import InterviewRoom from "./pages/InterviewRoom";
 import EvaluationPage from "./pages/EvaluationPage";
 import History from "./pages/History";
-import VideoTest from "./pages/VideoTest";
+
 
 function App() {
   return (
@@ -51,7 +51,7 @@ function App() {
       <Route path="/evaluation/:id" element={<EvaluationPage />} />
       
       <Route path="/history" element={<History />} />
-      <Route path="/video" element={<VideoTest />} />
+      
 
     </Routes>
   );
