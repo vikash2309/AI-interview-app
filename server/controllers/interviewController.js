@@ -194,7 +194,7 @@ export const finishInterview =
           {
             status:
               "completed",
-               cameraAnalytics,
+            cameraAnalytics,
           },
           {
             returnDocument: "after",
@@ -242,6 +242,9 @@ export const
 
             answers:
               interview.answers,
+
+            cameraAnalytics:
+              interview.cameraAnalytics,
           });
 
         interview.score =
@@ -257,6 +260,23 @@ export const
           overallFeedback:
             evaluation.overallFeedback,
         };
+        interview.feedback = {
+          strengths: evaluation.strengths,
+          improvements: evaluation.improvements,
+          overallFeedback: evaluation.overallFeedback,
+        };
+
+        interview.cameraFeedback = {
+          summary:
+            evaluation.cameraFeedback?.summary || "",
+
+          strengths:
+            evaluation.cameraFeedback?.strengths || [],
+
+          improvements:
+            evaluation.cameraFeedback?.improvements || [],
+        };
+
         interview.analytics = {
           technicalKnowledge:
             evaluation.analytics

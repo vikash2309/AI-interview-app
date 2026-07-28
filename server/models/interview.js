@@ -152,7 +152,25 @@ const interviewSchema =
           tooCloseFrames: Number,
           tooFarFrames: Number,
         },
+
       },
+      cameraFeedback: {
+  summary: {
+    type: String,
+    default: "",
+  },
+
+  strengths: {
+    type: [String],
+    default: [],
+  },
+
+  improvements: {
+    type: [String],
+    default: [],
+  },
+},
+      
     },
     {
       timestamps: true,
