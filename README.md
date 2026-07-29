@@ -1,6 +1,6 @@
 #  AI Interview Platform
 
-A full-stack AI-powered interview preparation platform that enables users to practice technical interviews through **voice and text interactions**, receive **AI-generated interview questions**, and get **detailed performance evaluations**.
+A full-stack AI-powered interview preparation platform that enables users to practice technical interviews through **voice and text interactions**, receive **AI-generated interview questions**, and get **detailed performance evaluations** with **live camera analytics and proctoring**.
 
 ---
 
@@ -43,6 +43,7 @@ A full-stack AI-powered interview preparation platform that enables users to pra
 - One-click answer recording
 - Automatic transcript generation
 - Automatic answer saving
+- Interview progress tracking with timers and question navigation
 
 ---
 
@@ -50,7 +51,17 @@ A full-stack AI-powered interview preparation platform that enables users to pra
 
 
 
-###  AI Evaluation
+### 📹 Camera Proctoring & Analytics
+
+- Face detection and presence monitoring
+- Head direction and camera framing analysis
+- Distance-from-camera checks
+- Real-time proctoring warnings during the interview
+- Camera-based insights included in the final evaluation report
+
+---
+
+### 🧠 AI Evaluation & Insights
 
 After completing an interview, Gemini AI generates:
 
@@ -63,6 +74,8 @@ After completing an interview, Gemini AI generates:
 - Strengths
 - Areas for Improvement
 - Personalized Feedback
+- Camera Analytics
+- Camera Feedback
 
 ---
 
