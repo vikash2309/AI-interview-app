@@ -51,6 +51,7 @@ function App() {
       <Route path="/evaluation/:id" element={<EvaluationPage />} />
       
       <Route path="/history" element={<History />} />
+      
 
     </Routes>
   );

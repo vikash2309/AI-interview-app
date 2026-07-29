@@ -58,13 +58,16 @@ export const saveAnswers =
 export const finishInterview =
   async (
     id,
+    cameraAnalytics,
     token
   ) => {
 
     const res =
       await axios.put(
         `${import.meta.env.VITE_API_URL}/interviews/${id}/finish`,
-        {},
+        {
+          cameraAnalytics,
+        },
         {
           headers: {
             Authorization:

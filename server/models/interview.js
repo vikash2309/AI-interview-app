@@ -32,10 +32,10 @@ const interviewSchema =
         type: String,
         required: true,
       },
-     roomName: {
-  type: String,
-  unique: true,
-},
+      roomName: {
+        type: String,
+        unique: true,
+      },
       questionCount: {
         type: Number,
         default: 0,
@@ -52,52 +52,52 @@ const interviewSchema =
         },
       ],
       score: {
-  type: Number,
-  default: 0,
-},
+        type: Number,
+        default: 0,
+      },
 
-feedback: {
-  strengths: {
-    type: [String],
-    default: [],
-  },
+      feedback: {
+        strengths: {
+          type: [String],
+          default: [],
+        },
 
-  improvements: {
-    type: [String],
-    default: [],
-  },
+        improvements: {
+          type: [String],
+          default: [],
+        },
 
-  overallFeedback: {
-    type: String,
-    default: "",
-  },
-},
-analytics: {
-  technicalKnowledge: {
-    type: Number,
-    default: 0,
-  },
+        overallFeedback: {
+          type: String,
+          default: "",
+        },
+      },
+      analytics: {
+        technicalKnowledge: {
+          type: Number,
+          default: 0,
+        },
 
-  communication: {
-    type: Number,
-    default: 0,
-  },
+        communication: {
+          type: Number,
+          default: 0,
+        },
 
-  problemSolving: {
-    type: Number,
-    default: 0,
-  },
+        problemSolving: {
+          type: Number,
+          default: 0,
+        },
 
-  confidence: {
-    type: Number,
-    default: 0,
-  },
+        confidence: {
+          type: Number,
+          default: 0,
+        },
 
-  practicalThinking: {
-    type: Number,
-    default: 0,
-  },
-},
+        practicalThinking: {
+          type: Number,
+          default: 0,
+        },
+      },
       status: {
         type: String,
         enum: [
@@ -107,6 +107,70 @@ analytics: {
         ],
         default: "pending",
       },
+      cameraAnalytics: {
+        faceVisibility: {
+          type: Number,
+          default: 0,
+        },
+
+        attention: {
+          type: Number,
+          default: 0,
+        },
+
+        centered: {
+          type: Number,
+          default: 0,
+        },
+
+        optimalDistance: {
+          type: Number,
+          default: 0,
+        },
+
+        overallCameraScore: {
+          type: Number,
+          default: 0,
+        },
+
+        raw: {
+          totalFrames: Number,
+
+          faceVisibleFrames: Number,
+          faceMissingFrames: Number,
+
+          forwardFrames: Number,
+          leftFrames: Number,
+          rightFrames: Number,
+          upFrames: Number,
+          downFrames: Number,
+
+          centeredFrames: Number,
+          offCenterFrames: Number,
+
+          optimalDistanceFrames: Number,
+          tooCloseFrames: Number,
+          tooFarFrames: Number,
+        },
+
+      },
+      cameraFeedback: {
+  summary: {
+    type: String,
+    default: "",
+  },
+
+  strengths: {
+    type: [String],
+    default: [],
+  },
+
+  improvements: {
+    type: [String],
+    default: [],
+  },
+},
+      
     },
     {
       timestamps: true,

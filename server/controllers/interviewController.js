@@ -31,19 +31,19 @@ export const createInterview =
       const duration = questionCount * 2;
 
       const interview = new Interview({
-  clerkId: req.userId,
-  company,
-  role,
-  difficulty,
-  duration,
-  interviewType,
-  questions,
-  questionCount,
-});
+        clerkId: req.userId,
+        company,
+        role,
+        difficulty,
+        duration,
+        interviewType,
+        questions,
+        questionCount,
+      });
 
-interview.roomName = `interview-${interview._id}`;
+      interview.roomName = `interview-${interview._id}`;
 
-await interview.save();
+      await interview.save();
       console.log(interview);
 
 
@@ -154,6 +154,36 @@ export const saveAnswers =
 export const finishInterview =
   async (req, res) => {
     try {
+      const defaultCameraAnalytics = {
+        faceVisibility: 0,
+        attention: 0,
+        centered: 0,
+        optimalDistance: 0,
+        overallCameraScore: 0,
+
+        raw: {
+          totalFrames: 0,
+
+          faceVisibleFrames: 0,
+          faceMissingFrames: 0,
+
+          forwardFrames: 0,
+          leftFrames: 0,
+          rightFrames: 0,
+          upFrames: 0,
+          downFrames: 0,
+
+          centeredFrames: 0,
+          offCenterFrames: 0,
+
+          optimalDistanceFrames: 0,
+          tooCloseFrames: 0,
+          tooFarFrames: 0,
+        },
+      };
+
+      const cameraAnalytics =
+        req.body.cameraAnalytics ?? defaultCameraAnalytics;
 
       const { id } =
         req.params;
@@ -164,6 +194,7 @@ export const finishInterview =
           {
             status:
               "completed",
+            cameraAnalytics,
           },
           {
             returnDocument: "after",
@@ -211,6 +242,9 @@ export const
 
             answers:
               interview.answers,
+
+            cameraAnalytics:
+              interview.cameraAnalytics,
           });
 
         interview.score =
@@ -226,6 +260,23 @@ export const
           overallFeedback:
             evaluation.overallFeedback,
         };
+        interview.feedback = {
+          strengths: evaluation.strengths,
+          improvements: evaluation.improvements,
+          overallFeedback: evaluation.overallFeedback,
+        };
+
+        interview.cameraFeedback = {
+          summary:
+            evaluation.cameraFeedback?.summary || "",
+
+          strengths:
+            evaluation.cameraFeedback?.strengths || [],
+
+          improvements:
+            evaluation.cameraFeedback?.improvements || [],
+        };
+
         interview.analytics = {
           technicalKnowledge:
             evaluation.analytics
